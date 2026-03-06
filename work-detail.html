@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Details — KitsuneRyuz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="mywebsite.css">
+<style>
+  .detail-container {
+    min-height: 100vh;
+    padding: 8rem 6rem 4rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .back-btn {
+    margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  .back-btn:hover {
+    color: var(--accent);
+  }
+
+  .work-detail-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 4rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 60px rgba(232,137,143,.15);
+  }
+
+  .work-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+
+  .work-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .work-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .meta-label {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .work-description {
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  .work-description p {
+    margin-bottom: 1.5rem;
+  }
+
+  .work-description h3 {
+    color: var(--accent);
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    font-family: 'Shippori Mincho', serif;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .work-description h3::before {
+    content: "◆";
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+
+  .work-description h4 {
+    color: #FFD700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .work-description ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    list-style: none;
+  }
+
+  .work-description li {
+    margin-bottom: 0.8rem;
+    color: var(--muted);
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .work-description li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature-box {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 16px;
+    transition: 0.3s;
+  }
+
+  .feature-box:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .feature-box h5 {
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  .feature-box p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .command-box {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #00FF88;
+  }
+
+  .command-box code {
+    color: #FFD700;
+  }
+
+  .stats-highlight {
+    background: linear-gradient(135deg, rgba(232,137,143,0.1), rgba(232,137,143,0.05));
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .stats-highlight h4 {
+    margin-top: 0;
+  }
+
+  .video-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .video-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    font-family: 'Shippori Mincho', serif;
+  }
+
+  .video-subtitle {
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 40px rgba(232,137,143,0.2);
+  }
+
+  .video-wrapper iframe,
+  .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+  .placeholder-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    gap: 1rem;
+  }
+
+  .placeholder-video .icon {
+    font-size: 3rem;
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .detail-container {
+      padding: 6rem 2rem 2rem;
+    }
+
+    .work-detail-card {
+      padding: 2rem;
+    }
+
+    .work-title {
+      font-size: 2.5rem;
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+<div class="grain"></div>
+
+<header class="navbar">
+  <div class="logo">狐 KitsuneRyuz</div>
+  <nav>
+    <a href="website.html#home">Home</a>
+    <a href="website.html#about">About</a>
+    <a href="website.html#skills">Skills</a>
+    <a href="website.html#projects">Projects</a>
+    <a href="website.html#work">Work</a>
+    <a href="website.html#store">🛒 Store</a>
+    <a href="website.html#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="detail-container">
+  <a href="website.html#work" class="back-btn">
+    ← Back to Work
+  </a>
+
+  <div class="work-detail-card" id="work-content">
+    <!-- Content will be loaded here by JavaScript -->
+  </div>
+</div>
+
+<footer>
+  © 2026 KitsuneRyuz — All Rights Reserved
+</footer>
+
+<script src="work-data.js"></script>
+<script>
+  // Get work ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const workId = urlParams.get('id');
+
+  // Load content
+  const contentDiv = document.getElementById('work-content');
+  
+  if (workId && workItems[workId]) {
+    const work = workItems[workId];
+    
+    let videoHTML = '';
+    if (work.videoUrl && work.videoUrl.trim() !== '') {
+      // If video URL is provided, show the video
+      videoHTML = `
+        <div class="video-section">
+          <h2 class="video-title">See It In Action</h2>
+          <p class="video-subtitle">Watch how this system works in a live server environment</p>
+          <div class="video-wrapper">
+            <iframe 
+              src="${work.videoUrl}" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      `;
+    } else {
+      // If no video URL, show placeholder with instructions
+      videoHTML = `
+        <div class="video-section">
+          <h2 class="video-title">See It In Action</h2>
+          <p class="video-subtitle">Video demonstration coming soon</p>
+          <div class="video-wrapper">
+            <div class="placeholder-video">
+              <div class="icon">🎬</div>
+              <p><strong>How to Add Your Video:</strong></p>
+              <p>1. Upload your video to YouTube</p>
+              <p>2. Copy the video ID from the URL (e.g., "dQw4w9WgXcQ")</p>
+              <p>3. In work-data.js, find "${workId}" and set videoUrl to:</p>
+              <p style="font-family: monospace; color: #FFD700;">"https://www.youtube.com/embed/YOUR_VIDEO_ID"</p>
+              <p style="margin-top: 1rem; color: var(--accent);">Contact me to add your showcase video!</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    contentDiv.innerHTML = `
+      <h1 class="work-title">${work.title}</h1>
+      
+      <div class="work-meta">
+        <span><span class="meta-label">Category:</span> ${work.category}</span>
+        <span><span class="meta-label">Technologies:</span> ${work.tech}</span>
+      </div>
+
+      <div class="work-description">
+        ${work.description}
+      </div>
+
+      ${videoHTML}
+    `;
+  } else {
+    contentDiv.innerHTML = `
+      <h1 class="work-title">Work Not Found</h1>
+      <p>Sorry, the requested work item could not be found.</p>
+      <a href="website.html#work" class="btn primary">Back to Work</a>
+    `;
+  }
+</script>
+
+</body>
+</html>
